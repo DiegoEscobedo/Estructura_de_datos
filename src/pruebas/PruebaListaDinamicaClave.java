@@ -1,0 +1,88 @@
+package pruebas;
+
+import entradaSalida.SalidaPorDefecto;
+import estructurasLineales.ListaDinamica;
+import estructurasLineales.ListaDinamicaClave;
+import estructurasLineales.ListaEstatica;
+import estructurasNoLineales.Matriz2;
+
+public class PruebaListaDinamicaClave {
+    public static void main(String[] args) {
+        ListaDinamicaClave listadincla = new ListaDinamicaClave();
+        listadincla.agregar("ab", "A");
+        listadincla.agregar(2, "B");
+        listadincla.agregar(3, "C");
+        listadincla.agregar(4, "D");
+        listadincla.agregar(5, "E");
+        listadincla.agregar("ab", "Z");listadincla.imprimir();
+        SalidaPorDefecto.terminal("\n");
+        SalidaPorDefecto.terminal("Pasando s lista estatica...");
+        ListaEstatica listaEstatica = listadincla.aListaEstatica();
+        ListaEstatica listaClaves =(ListaEstatica) listaEstatica.obtener(0);
+        ListaEstatica listaValore =(ListaEstatica) listaEstatica.obtener(1);
+        SalidaPorDefecto.terminal("Obteniendo la clave 0 con el valor 0... clave:"+ listaClaves.obtener(0) +" valor:"+ listaValore.obtener(0));
+        SalidaPorDefecto.terminal("\n");
+        SalidaPorDefecto.terminal("Pasando s lista dinamica...");
+        ListaDinamica listaDinamica = listadincla.aListasDinamicas();
+        ListaDinamica listaDClaves =(ListaDinamica) listaDinamica.obtener(0);
+        ListaDinamica listaDValore =(ListaDinamica) listaDinamica.obtener(1);
+        SalidaPorDefecto.terminal("Obteniendo la clave 2 con el valor 2... clave:"+ listaDClaves.obtener(2) +" valor:"+ listaDValore.obtener(2));
+        SalidaPorDefecto.terminal("\n");
+        SalidaPorDefecto.terminal("Obteniendo el valor con la clave 5..." + "  valor:" + listadincla.obtener(5));
+        SalidaPorDefecto.terminal("\n");
+        ListaDinamicaClave listadincla2 = new ListaDinamicaClave();
+        listadincla2.agregar("az", "S");
+        listadincla2.agregar(24, "K");
+        listadincla2.agregar(3, "ME");
+        listadincla2.agregar(421, "CD");
+        listadincla2.agregar(50, "DR");
+        SalidaPorDefecto.terminal("Agregar la siguiente lista a la original:");
+        listadincla2.imprimir();
+        SalidaPorDefecto.terminal("\n");
+        listadincla.agregarLista(listadincla2);
+        SalidaPorDefecto.terminal("Resultado... \n");
+        listadincla.imprimir();
+        SalidaPorDefecto.terminal("\n");
+        SalidaPorDefecto.terminal("Los elementos totales de la lista son: " + listadincla.contarValores());
+        SalidaPorDefecto.terminal("\n");
+        SalidaPorDefecto.terminal("Agregar la siguentes listas de claves y valores");
+        SalidaPorDefecto.terminal("\n");
+        ListaEstatica claves = new ListaEstatica(2);ListaEstatica valores = new ListaEstatica(2);
+        claves.agregar(00);claves.agregar(023);valores.agregar("hola");valores.agregar("no");
+        SalidaPorDefecto.terminal("CLAVES \n");
+        claves.imprimir();
+        SalidaPorDefecto.terminal("VALORES \n");
+        valores.imprimir();
+        listadincla.agregarListasEstaticas(claves,valores);
+        SalidaPorDefecto.terminal("\n");
+        SalidaPorDefecto.terminal("Resultado... \n");
+        listadincla.imprimir();
+        SalidaPorDefecto.terminal("\n");
+        SalidaPorDefecto.terminal("Agregar la siguentes listas dinamicas de claves y valores");
+        SalidaPorDefecto.terminal("\n");
+        ListaDinamica clavesd = new ListaDinamica();ListaDinamica valoresd = new ListaDinamica();
+        clavesd.agregar(122);clavesd.agregar(13);valoresd.agregar("adios");valoresd.agregar("si");
+        SalidaPorDefecto.terminal("CLAVES \n");
+        clavesd.imprimir();
+        SalidaPorDefecto.terminal("\n");
+        SalidaPorDefecto.terminal("VALORES \n");
+        valoresd.imprimir();
+        SalidaPorDefecto.terminal("\n");
+        listadincla.agregarListasDinamicas(clavesd, valoresd);
+        SalidaPorDefecto.terminal("Resultado... \n");
+        listadincla.imprimir();
+        SalidaPorDefecto.terminal("\n");
+        SalidaPorDefecto.terminal("Agregar la siguente matriz de claves y valores");
+        SalidaPorDefecto.terminal("\n");
+        Matriz2 matriz = new Matriz2(2,2);
+        matriz.cambiar(0,0, 34);matriz.cambiar(1,0, 243);matriz.cambiar(0,1, "okey");matriz.cambiar(1,1, "nada");
+        SalidaPorDefecto.terminal("MATRIZ \n");
+        matriz.imprimirPorRenglon();
+        listadincla.agregarMatriz2(matriz);
+        SalidaPorDefecto.terminal("\n");
+        SalidaPorDefecto.terminal("Resultado... \n");
+        listadincla.imprimir();
+        SalidaPorDefecto.terminal("\n");
+
+    }
+}
